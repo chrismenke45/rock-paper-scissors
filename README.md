@@ -1,0 +1,1 @@
+this is my first project with JavaScript.  I am making a program that will play rock paper scissors with you through the console.
