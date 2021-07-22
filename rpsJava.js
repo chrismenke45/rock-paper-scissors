@@ -4,29 +4,31 @@ function computerPlay() {
     let computerSelection = options.slice(decider, (decider + 1));
     return computerSelection.toString();
 }
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === 'rock' && computerSelection === 'paper') {
-        alert('You Lose! ' + computerSelection + ' beats ' + playerSelection + '!');
         losses++;
+        computerScore.innerHTML = "Computer: " + losses;
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        alert('You Lose! ' + computerSelection + ' beats ' + playerSelection + '!');
         losses++;
+        computerScore.innerHTML = "Computer: " + losses;
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        alert('You Lose! ' + computerSelection + ' beats ' + playerSelection + '!');
         losses++;
+        computerScore.innerHTML = "Computer: " + losses;
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        alert('You Win! ' + playerSelection + ' beats ' + computerSelection + '!');
         wins++;
+        playerScore.innerHTML = "Player: " + wins;
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        alert('You Win! ' + playerSelection + ' beats ' + computerSelection + '!');
         wins++;
+        playerScore.innerHTML = "Player: " + wins;
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        alert('You Win! ' + playerSelection + ' beats ' + computerSelection + '!');
         wins++;
+        playerScore.innerHTML = "Player: " + wins;
     } else if (playerSelection === computerSelection) {
         alert('Tie, you both chose ' + playerSelection + '!');
     }
 }
+/*
 let wins = 0;
 let losses = 0;
 let i;
@@ -53,4 +55,34 @@ if (wins > losses) {
     alert('You won ' + wins + ' to ' + losses + '! Good Job!')
 } else {
     alert('Sorry, you lost ' + losses + ' to ' + wins + '. Try again!')
+} */
+let wins = 0;
+let losses = 0;
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const playerScore = document.querySelector('#playerCaption');
+const computerScore = document.querySelector('#computerCaption');
+
+function yeehaw () {
+    alert('yeehaw!');
 }
+function chooseRock () {
+    let playerSelection = 'rock';
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+}
+function choosePaper () {
+    let playerSelection = 'paper';
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+}
+function chooseScissors () {
+    let playerSelection = 'scissors';
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+}
+rock.addEventListener('click', chooseRock);
+paper.addEventListener('click', choosePaper);
+scissors.addEventListener('click', chooseScissors);
+

@@ -1,0 +1,64 @@
+#info {
+    text-align:center;
+    color: purple;
+}
+#selection {
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+width: 50%;
+margin: auto;
+padding-bottom: 5px;
+
+}
+#playerSelection {
+    display: flex;
+    width: 70px;
+    height: 100px;
+    border: solid;
+    border-color: black;
+    padding: 60px;
+}
+#computerSelection {
+    display: flex;
+    width: 70px;
+    height: 100px;
+    border: solid;
+    border-color: black;
+    padding: 60px;
+}
+#selectionCaption {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 26%;
+    margin: auto;
+    
+}
+#playerCaption {
+    display: flex;
+    width: 50px;
+}
+#computerCaption {
+    display: flex;
+    width: 50px;
+}
+#choiceDescription {
+    text-align: center;
+}
+#choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: auto;
+}
+#rock :hover {
+    cursor: pointer;
+}
+#paper :hover {
+    cursor: pointer;
+}
+#scissors :hover {
+    cursor: pointer;
+}
