@@ -15,14 +15,14 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
-        playerImage (playerSelection);
-        computerImage (computerSelection);
+        //playerImage (playerSelection);
+        computerImage (computerSelection, computerScore);
         winOrLoss.innerHTML = '<';
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
-        playerImage (playerSelection);
-        computerImage (computerSelection);
+        //playerImage (playerSelection);
+        computerImage (computerSelection, computerScore);
         winOrLoss.innerHTML = '<';
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         wins++;
@@ -33,14 +33,14 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
-        playerImage (playerSelection);
-        computerImage (computerSelection);
+        playerImage (playerSelection, playerScore);
+        //computerImage (computerSelection);
         winOrLoss.innerHTML = '>';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
-        playerImage (playerSelection);
-        computerImage (computerSelection);
+        playerImage (playerSelection, playerScore);
+        //computerImage (computerSelection);
         winOrLoss.innerHTML = '>';
     } else if (playerSelection === computerSelection) {
         playerImage (playerSelection, playerScore);
