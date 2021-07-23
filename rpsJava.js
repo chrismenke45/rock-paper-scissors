@@ -11,34 +11,41 @@ function playRound(playerSelection, computerSelection) {
         computerScore.innerHTML = "Computer: " + losses;
         playerImage (playerSelection);
         computerImage (computerSelection);
+        winOrLoss.innerHTML = '<';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
         playerImage (playerSelection);
         computerImage (computerSelection);
+        winOrLoss.innerHTML = '<';
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
         playerImage (playerSelection);
         computerImage (computerSelection);
+        winOrLoss.innerHTML = '<';
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
         playerImage (playerSelection);
         computerImage (computerSelection);
+        winOrLoss.innerHTML = '>';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
         playerImage (playerSelection);
         computerImage (computerSelection);
+        winOrLoss.innerHTML = '>';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
         playerImage (playerSelection);
         computerImage (computerSelection);
+        winOrLoss.innerHTML = '>';
     } else if (playerSelection === computerSelection) {
         playerImage (playerSelection);
         computerImage (computerSelection);
+        winOrLoss.innerHTML = '=';
     }
 }
 function chooseRock () {
@@ -46,6 +53,8 @@ function chooseRock () {
     let playerSelection = 'rock';
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
+    audio.currentTime = 0;
+    audio.play();
     endCheck();
 }
 function endCheck () {
@@ -55,12 +64,14 @@ function endCheck () {
         losses = 0;
         computerScore.innerHTML = "Computer";
         playerScore.innerHTML = "Player"
+        winOrLoss.innerHTML = ' ';
     } else if (losses >= 5) {
         instructions.innerHTML = 'You lost ' + losses + ' to ' + wins + '. Better luck next time!';
         wins = 0;
         losses = 0;
         computerScore.innerHTML = "Computer";
         playerScore.innerHTML = "Player"
+        winOrLoss.innerHTML = ' ';
     }
 }
 function choosePaper () {
@@ -68,6 +79,8 @@ function choosePaper () {
     let playerSelection = 'paper';
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
+    audio.currentTime = 0;
+    audio.play();
     endCheck();
 }
 function chooseScissors () {
@@ -75,6 +88,8 @@ function chooseScissors () {
     let playerSelection = 'scissors';
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
+    audio.currentTime = 0;
+    audio.play();
     endCheck();
 }
 function playerImage (playerSelection) {
@@ -96,7 +111,8 @@ const scissors = document.querySelector('#scissors');
 const playerScore = document.querySelector('#playerCaption');
 const computerScore = document.querySelector('#computerCaption');
 const instructions = document.querySelector('h3');
-
+const audio = document.querySelector('audio')
+const winOrLoss = document.querySelector('#winOrLoss')
 
 rock.addEventListener('click', chooseRock);
 paper.addEventListener('click', choosePaper);
