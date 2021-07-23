@@ -9,53 +9,85 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
+        playerImage (playerSelection);
+        computerImage (computerSelection);
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
+        playerImage (playerSelection);
+        computerImage (computerSelection);
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
+        playerImage (playerSelection);
+        computerImage (computerSelection);
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
+        playerImage (playerSelection);
+        computerImage (computerSelection);
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
+        playerImage (playerSelection);
+        computerImage (computerSelection);
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
+        playerImage (playerSelection);
+        computerImage (computerSelection);
     } else if (playerSelection === computerSelection) {
-        alert('Tie, you both chose ' + playerSelection + '!');
+        playerImage (playerSelection);
+        computerImage (computerSelection);
     }
 }
-/*
-let wins = 0;
-let losses = 0;
-let i;
-for (let i = 0; i < 5;) {
+function chooseRock () {
+    instructions.innerHTML = 'First to 5 Wins!'
+    let playerSelection = 'rock';
     let computerSelection = computerPlay();
-    let check = false;
-    let playerSelection
-    do {
-        let playerSelectionInitial = prompt("Rock, Paper or Scissors?");
-        let playerSelectionWhile = playerSelectionInitial.toLowerCase();
-        if (playerSelectionWhile === 'rock' || playerSelectionWhile === 'paper' || playerSelectionWhile === 'scissors') {
-            check = true;
-            playerSelection = playerSelectionWhile
-        } else {
-            alert("Please try again with an accecpted value");
-        }
-    }
-    while (check === false);
-
     playRound(playerSelection, computerSelection);
-    i = wins + losses;
+    endCheck();
 }
-if (wins > losses) {
-    alert('You won ' + wins + ' to ' + losses + '! Good Job!')
-} else {
-    alert('Sorry, you lost ' + losses + ' to ' + wins + '. Try again!')
-} */
+function endCheck () {
+    if (wins >= 5) {
+        instructions.innerHTML = 'You won ' + wins + ' to ' + losses + '. Good Job!';
+        wins = 0;
+        losses = 0;
+        computerScore.innerHTML = "Computer";
+        playerScore.innerHTML = "Player"
+    } else if (losses >= 5) {
+        instructions.innerHTML = 'You lost ' + losses + ' to ' + wins + '. Better luck next time!';
+        wins = 0;
+        losses = 0;
+        computerScore.innerHTML = "Computer";
+        playerScore.innerHTML = "Player"
+    }
+}
+function choosePaper () {
+    instructions.innerHTML = 'First to 5 Wins!'
+    let playerSelection = 'paper';
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    endCheck();
+}
+function chooseScissors () {
+    instructions.innerHTML = 'First to 5 Wins!'
+    let playerSelection = 'scissors';
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    endCheck();
+}
+function playerImage (playerSelection) {
+    let playerIMG = document.createElement("img");
+    playerIMG.src = playerSelection + '.png';
+    document.getElementById('playerChoice').replaceChildren(playerIMG);
+}
+function computerImage (computerSelection) {
+    let computerIMG = document.createElement("img");
+    computerIMG.src = computerSelection + '.png';
+    document.getElementById('computerChoice').replaceChildren(computerIMG);
+}
+
 let wins = 0;
 let losses = 0;
 const rock = document.querySelector('#rock');
@@ -63,25 +95,9 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const playerScore = document.querySelector('#playerCaption');
 const computerScore = document.querySelector('#computerCaption');
+const instructions = document.querySelector('h3');
 
-function yeehaw () {
-    alert('yeehaw!');
-}
-function chooseRock () {
-    let playerSelection = 'rock';
-    let computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-}
-function choosePaper () {
-    let playerSelection = 'paper';
-    let computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-}
-function chooseScissors () {
-    let playerSelection = 'scissors';
-    let computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-}
+
 rock.addEventListener('click', chooseRock);
 paper.addEventListener('click', choosePaper);
 scissors.addEventListener('click', chooseScissors);

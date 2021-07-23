@@ -11,7 +11,7 @@ margin: auto;
 padding-bottom: 5px;
 
 }
-#playerSelection {
+#playerChoice {
     display: flex;
     width: 70px;
     height: 100px;
@@ -19,7 +19,7 @@ padding-bottom: 5px;
     border-color: black;
     padding: 60px;
 }
-#computerSelection {
+#computerChoice {
     display: flex;
     width: 70px;
     height: 100px;
@@ -45,6 +45,7 @@ padding-bottom: 5px;
 }
 #choiceDescription {
     text-align: center;
+    font-weight: bold;
 }
 #choices {
     display: flex;
