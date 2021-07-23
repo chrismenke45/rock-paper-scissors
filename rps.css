@@ -12,37 +12,42 @@ flex-direction: row;
 justify-content: space-evenly;
 width: 50%;
 margin: auto;
-padding-bottom: 5px;
-align-items: center;
+align-items: baseline;
 }
 #playerChoice {
     display: flex;
+    flex-direction: column;
     width: 70px;
     height: 100px;
 }
 #winOrLoss {
     font-size: 30px;
+    transition: .3s;
+}
+.newFight {
+    color: red;
 }
 #computerChoice {
     display: flex;
+    flex-direction: column;
     width: 70px;
     height: 100px;
 }
-#selectionCaption {
+/*#selectionCaption {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 26%;
     margin: auto;
-    
-}
+    align-items: center;  
+} */
 #playerCaption {
-    display: flex;
-    width: 80px;
+    /*display: flex;*/
+    width: 90px;
 }
 #computerCaption {
-    display: flex;
-    width: 80px;
+    /*display: flex;*/
+    width: 90px;
 }
 #choiceDescription {
     text-align: center;

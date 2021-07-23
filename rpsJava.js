@@ -9,8 +9,8 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === 'rock' && computerSelection === 'paper') {
         losses++;
         computerScore.innerHTML = "Computer: " + losses;
-        playerImage (playerSelection);
-        computerImage (computerSelection);
+        //playerImage (playerSelection);
+        computerImage (computerSelection, computerScore);
         winOrLoss.innerHTML = '<';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         losses++;
@@ -27,8 +27,8 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         wins++;
         playerScore.innerHTML = "Player: " + wins;
-        playerImage (playerSelection);
-        computerImage (computerSelection);
+        playerImage (playerSelection, playerScore);
+        // computerImage (computerSelection);
         winOrLoss.innerHTML = '>';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         wins++;
@@ -43,10 +43,11 @@ function playRound(playerSelection, computerSelection) {
         computerImage (computerSelection);
         winOrLoss.innerHTML = '>';
     } else if (playerSelection === computerSelection) {
-        playerImage (playerSelection);
-        computerImage (computerSelection);
+        playerImage (playerSelection, playerScore);
+        computerImage (computerSelection, computerScore);
         winOrLoss.innerHTML = '=';
     }
+    winOrLoss.classList.add('newFight')
 }
 function chooseRock () {
     instructions.innerHTML = 'First to 5 Wins!'
@@ -62,15 +63,15 @@ function endCheck () {
         instructions.innerHTML = 'You won ' + wins + ' to ' + losses + '. Good Job!';
         wins = 0;
         losses = 0;
-        computerScore.innerHTML = "Computer";
-        playerScore.innerHTML = "Player"
+        computerScore.innerHTML = "Computer: 0";
+        playerScore.innerHTML = "Player: 0"
         winOrLoss.innerHTML = ' ';
     } else if (losses >= 5) {
         instructions.innerHTML = 'You lost ' + losses + ' to ' + wins + '. Better luck next time!';
         wins = 0;
         losses = 0;
-        computerScore.innerHTML = "Computer";
-        playerScore.innerHTML = "Player"
+        computerScore.innerHTML = "Computer: 0";
+        playerScore.innerHTML = "Player: 0"
         winOrLoss.innerHTML = ' ';
     }
 }
@@ -92,17 +93,20 @@ function chooseScissors () {
     audio.play();
     endCheck();
 }
-function playerImage (playerSelection) {
+function playerImage (playerSelection, playerScore) {
     let playerIMG = document.createElement("img");
     playerIMG.src = playerSelection + '.png';
-    document.getElementById('playerChoice').replaceChildren(playerIMG);
+    document.getElementById('playerChoice').replaceChildren(playerIMG, playerScore);
 }
-function computerImage (computerSelection) {
+function computerImage (computerSelection, computerScore) {
     let computerIMG = document.createElement("img");
     computerIMG.src = computerSelection + '.png';
-    document.getElementById('computerChoice').replaceChildren(computerIMG);
+    document.getElementById('computerChoice').replaceChildren(computerIMG, computerScore);
 }
-
+function removeTransition(e) {
+    if (e.propertyName !== 'color') return;
+    e.target.classList.remove('newFight');
+  }
 let wins = 0;
 let losses = 0;
 const rock = document.querySelector('#rock');
@@ -117,4 +121,5 @@ const winOrLoss = document.querySelector('#winOrLoss')
 rock.addEventListener('click', chooseRock);
 paper.addEventListener('click', choosePaper);
 scissors.addEventListener('click', chooseScissors);
+winOrLoss.addEventListener('transitionend', removeTransition);
 
